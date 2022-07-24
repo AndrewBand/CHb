@@ -57,7 +57,7 @@ public class MenuNotification {
                 .callbackData(String.valueOf(NotificationTime.EIGHTEEN.getTime()))
                 .build();
         InlineKeyboardButton buttonTurnOfNotification = InlineKeyboardButton.builder()
-                .text("Вимкнути сповіщення" + getButtonStatus(NotificationTime.SWICH_OFF, selectedNotificationTime))
+                .text("OFF" + getButtonStatus(NotificationTime.SWICH_OFF, selectedNotificationTime))
                 .callbackData(String.valueOf(NotificationTime.SWICH_OFF.getTime()))
                 .build();
         InlineKeyboardButton buttonBack = InlineKeyboardButton.builder()

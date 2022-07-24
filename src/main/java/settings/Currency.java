@@ -42,4 +42,13 @@ public enum Currency {
         }
         return selectedCurrency;
     }
+
+    public static Currency convertToEnum (String text){
+        for (Currency currency: Currency.values()) {
+            if (currency.name().equals(text)) {
+                return currency;
+            }
+        }
+        return null;
+    }
 }

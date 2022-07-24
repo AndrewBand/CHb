@@ -35,4 +35,13 @@ public enum Banks {
 
     public void setSelect(boolean select) { this.select = select; }
 
+    public static Banks convertToEnum (String text){
+        for (Banks bank: Banks.values()) {
+            if (bank.getBankNameEN().equals(text)) {
+                return bank;
+            }
+        }
+        return null;
+    }
+
 }

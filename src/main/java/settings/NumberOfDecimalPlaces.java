@@ -39,6 +39,13 @@ public enum NumberOfDecimalPlaces {
         this.select = select;
     }
 
-
+    public static NumberOfDecimalPlaces convertToEnum (String text){
+        for (NumberOfDecimalPlaces decimalPlaces: NumberOfDecimalPlaces.values()) {
+            if (decimalPlaces.getNameDecPlaces().equals(text)) {
+                return decimalPlaces;
+            }
+        }
+        return null;
+    }
 }
 

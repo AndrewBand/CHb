@@ -38,4 +38,12 @@ public enum NotificationTime {
         this.select = select;
     }
 
+    public static NotificationTime convertToEnum (String text){
+        for (NotificationTime time: NotificationTime.values()) {
+            if (String.valueOf(time.getTime()).equals(text)) {
+                return time;
+            }
+        }
+        return null;
+    }
 }
