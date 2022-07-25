@@ -76,7 +76,8 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         long chatId = message.getChatId();
         synchronized (monitor) {
             if (Settings.settings.get(chatId) == null) {
-                userSettings = new Setting(chatId);
+                userSettings = new Setting(chatId, NumberOfDecimalPlaces.TWO, Banks.PRIVAT,
+                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTCTHREE);
             } else {
                 userSettings = Settings.settings.get(chatId);
             }
@@ -105,7 +106,8 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         long chatId = buttonQuery.getMessage().getChatId();
         synchronized (monitor) {
             if (Settings.settings.get(chatId) == null) {
-                userSettings = new Setting(chatId);
+                userSettings = new Setting(chatId, NumberOfDecimalPlaces.TWO, Banks.PRIVAT,
+                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTCTHREE);
             } else {
                 userSettings = Settings.settings.get(chatId);
             }
