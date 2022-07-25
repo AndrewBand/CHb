@@ -28,10 +28,7 @@ public class HttpUtil {
     }
 
     public static Bank getPrivat(List<Privat> date) {
-        Banks bankPrivat = Banks.PRIVAT;
         Bank bank = new Bank();
-
-        bank.setBankName(bankPrivat);
         for (Privat currency : date) {
             switch (currency.getCcy()) {
                 case "USD":

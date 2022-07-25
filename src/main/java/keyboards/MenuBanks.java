@@ -32,6 +32,10 @@ public class MenuBanks {
                 .text(Banks.MONO.getBankNameEN() + getButtonStatus(Banks.MONO, selectedBank))
                 .callbackData(Banks.MONO.getBankNameEN())
                 .build();
+        InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
+                .text(Buttons.BACK_HOME.getName())
+                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .build();
         InlineKeyboardButton buttonBack = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())
                 .callbackData(Buttons.BACK_TO_SETTINGS.getNameEN())
@@ -39,6 +43,7 @@ public class MenuBanks {
         keyboardMSetRow1.add(buttonPrivat);
         keyboardMSetRow2.add(buttonNBU);
         keyboardMSetRow3.add(buttonMonobank);
+        keyboardMSetRow4.add(buttonHome);
         keyboardMSetRow4.add(buttonBack);
         keyboardMenuBanks.add(keyboardMSetRow1);
         keyboardMenuBanks.add(keyboardMSetRow2);

@@ -29,7 +29,6 @@ public class HttpUtil {
 
     public static Bank getNbu(List<NbuBank> listCurr) {
         Bank bank = new Bank();
-        bank.setBankName(Banks.NBU);
         for (NbuBank currency : listCurr) {
             switch (currency.getCc()) {
                 case "USD":

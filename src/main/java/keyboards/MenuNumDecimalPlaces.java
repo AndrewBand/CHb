@@ -29,6 +29,10 @@ public class MenuNumDecimalPlaces {
                 .text(NumberOfDecimalPlaces.FOUR.getIntNumber()+getButtonStatus(NumberOfDecimalPlaces.FOUR.getIntNumber(), selectedNumDecPlaces))
                 .callbackData(NumberOfDecimalPlaces.FOUR.getNameDecPlaces())
                 .build();
+        InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
+                .text(Buttons.BACK_HOME.getName())
+                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .build();
         InlineKeyboardButton buttonBackToSetting = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())
                 .callbackData(Buttons.BACK_TO_SETTINGS.getNameEN())
@@ -36,6 +40,7 @@ public class MenuNumDecimalPlaces {
         keyboardMSetRow1.add(buttonNumberOfDecimalPlaces2);
         keyboardMSetRow2.add(buttonNumberOfDecimalPlaces3);
         keyboardMSetRow3.add(buttonNumberOfDecimalPlaces4);
+        keyboardMSetRow4.add(buttonHome);
         keyboardMSetRow4.add(buttonBackToSetting);
         keyboard.add(keyboardMSetRow1);
         keyboard.add(keyboardMSetRow2);

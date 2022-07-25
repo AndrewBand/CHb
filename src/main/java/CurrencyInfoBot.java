@@ -121,6 +121,7 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
             case "SETTINGS":
                 printMessage(chatId, MenuSettings.keyboard(Settings.settings.get(chatId)), "Виберіть налаштування");
                 break;
+            case "BACK_HOME":
             case "BACK_TO_START":
                 printMessage(chatId, MenuStart.keyboard(), "Щоб отримати інфо натисність кнопку");
                 break;

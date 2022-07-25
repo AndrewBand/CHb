@@ -33,6 +33,10 @@ public class MenuCurrency {
                 .text(Currency.BTC.getCurrencyName() + getButtonStatus(Currency.BTC, selectedCurrencies))
                 .callbackData(Currency.BTC.getCurrencyName())
                 .build();
+        InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
+                .text(Buttons.BACK_HOME.getName())
+                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .build();
         InlineKeyboardButton buttonBack = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())
                 .callbackData(Buttons.BACK_TO_SETTINGS.getNameEN())
@@ -41,6 +45,7 @@ public class MenuCurrency {
         keyboardMenuCurrency2.add(buttonEur);
         keyboardMenuCurrency3.add(buttonPln);
         keyboardMenuCurrency4.add(buttonBtc);
+        keyboardMenuCurrency5.add(buttonHome);
         keyboardMenuCurrency5.add(buttonBack);
         keyboardMenuCurrency.add(keyboardMenuCurrency1);
         keyboardMenuCurrency.add(keyboardMenuCurrency2);

@@ -60,6 +60,10 @@ public class MenuNotification {
                 .text("OFF" + getButtonStatus(NotificationTime.SWICH_OFF, selectedNotificationTime))
                 .callbackData(String.valueOf(NotificationTime.SWICH_OFF.getTime()))
                 .build();
+        InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
+                .text(Buttons.BACK_HOME.getName())
+                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .build();
         InlineKeyboardButton buttonBack = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())
                 .callbackData(Buttons.BACK_TO_SETTINGS.getNameEN())
@@ -67,14 +71,15 @@ public class MenuNotification {
         keyboardMSetRow1.add(buttonNotificationTime9);
         keyboardMSetRow1.add(buttonNotificationTime10);
         keyboardMSetRow1.add(buttonNotificationTime11);
-        keyboardMSetRow2.add(buttonNotificationTime12);
-        keyboardMSetRow2.add(buttonNotificationTime13);
+        keyboardMSetRow1.add(buttonNotificationTime12);
+        keyboardMSetRow1.add(buttonNotificationTime13);
         keyboardMSetRow2.add(buttonNotificationTime14);
-        keyboardMSetRow3.add(buttonNotificationTime15);
-        keyboardMSetRow3.add(buttonNotificationTime16);
-        keyboardMSetRow3.add(buttonNotificationTime17);
-        keyboardMSetRow4.add(buttonNotificationTime18);
-        keyboardMSetRow4.add(buttonTurnOfNotification);
+        keyboardMSetRow2.add(buttonNotificationTime15);
+        keyboardMSetRow2.add(buttonNotificationTime16);
+        keyboardMSetRow2.add(buttonNotificationTime17);
+        keyboardMSetRow2.add(buttonNotificationTime18);
+        keyboardMSetRow3.add(buttonTurnOfNotification);
+        keyboardMSetRow4.add(buttonHome);
         keyboardMSetRow4.add(buttonBack);
         keyboardMenuNotification.add(keyboardMSetRow1);
         keyboardMenuNotification.add(keyboardMSetRow2);

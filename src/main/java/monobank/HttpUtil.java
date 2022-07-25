@@ -30,7 +30,6 @@ public class HttpUtil {
 
     public static Bank getMonobank(List<Monobank> monobankList) {
         Bank bank = new Bank();
-        bank.setBankName(Banks.MONO);
         for (Monobank currency : monobankList) {
             if (currency.getCurrencyCodeA() == 840 && currency.getCurrencyCodeB() == 980) {
                 bank.setUSD_buy(currency.getRateBuy());

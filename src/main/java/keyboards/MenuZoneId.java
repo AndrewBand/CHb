@@ -22,6 +22,7 @@ public class MenuZoneId {
         List<InlineKeyboardButton> keyboardMZoneIdRow5 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow6 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow7 = new ArrayList<>();
+        List<InlineKeyboardButton> keyboardMZoneIdRow8 = new ArrayList<>();
         InlineKeyboardButton buttonZoneIdOne = InlineKeyboardButton.builder()
                 .text(ZoneId.UTCONE.getNameZone() + getButtonStatus(ZoneId.UTCONE, selectedZoneID))
                 .callbackData(ZoneId.UTCONE.getNameZone())
@@ -122,6 +123,10 @@ public class MenuZoneId {
                 .text(ZoneId.UTCZERO.getNameZone() + getButtonStatus(ZoneId.UTCZERO, selectedZoneID))
                 .callbackData(ZoneId.UTCZERO.getNameZone())
                 .build();
+        InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
+                .text(Buttons.BACK_HOME.getName())
+                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .build();
         InlineKeyboardButton buttonBackToSetting = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())
                 .callbackData(Buttons.BACK_TO_SETTINGS.getNameEN())
@@ -158,7 +163,9 @@ public class MenuZoneId {
         keyboardMZoneIdRow6.add(buttonZoneIdMTwelve);
 
         keyboardMZoneIdRow7.add(buttonZoneIdZero);
-        keyboardMZoneIdRow7.add(buttonBackToSetting);
+
+        keyboardMZoneIdRow8.add(buttonHome);
+        keyboardMZoneIdRow8.add(buttonBackToSetting);
 
 
         keyboardMZoneId.add(keyboardMZoneIdRow1);
@@ -168,6 +175,8 @@ public class MenuZoneId {
         keyboardMZoneId.add(keyboardMZoneIdRow5);
         keyboardMZoneId.add(keyboardMZoneIdRow6);
         keyboardMZoneId.add(keyboardMZoneIdRow7);
+        keyboardMZoneId.add(keyboardMZoneIdRow8);
+
 
 
         return InlineKeyboardMarkup.builder().keyboard(keyboardMZoneId).build();
