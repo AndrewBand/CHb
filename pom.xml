@@ -44,17 +44,7 @@
             <artifactId>heroku-maven-plugin</artifactId>
             <version>3.0.4</version>
         </dependency>
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
     </dependencies>
     <build>
         <plugins>
