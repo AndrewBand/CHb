@@ -3,14 +3,18 @@ package keyboards;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import settings.Buttons;
+import settings.Setting;
+import settings.Settings;
 import settings.ZoneId;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuZoneId {
-    public static InlineKeyboardMarkup keyboard() {
-        List<List<InlineKeyboardButton>> keyboardMZoneId =  new ArrayList<>();
+    public static InlineKeyboardMarkup keyboard(Long chatId) {
+        Setting userSetting = Settings.settings.get(chatId);
+        ZoneId selectedZoneID = userSetting.getZoneId();
+        List<List<InlineKeyboardButton>> keyboardMZoneId = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow1 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow2 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow3 = new ArrayList<>();
@@ -19,103 +23,103 @@ public class MenuZoneId {
         List<InlineKeyboardButton> keyboardMZoneIdRow6 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMZoneIdRow7 = new ArrayList<>();
         InlineKeyboardButton buttonZoneIdOne = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCONE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCONE))
+                .text(ZoneId.UTCONE.getNameZone() + getButtonStatus(ZoneId.UTCONE, selectedZoneID))
                 .callbackData(ZoneId.UTCONE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdTwo = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCTWO.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCTWO))
+                .text(ZoneId.UTCTWO.getNameZone() + getButtonStatus(ZoneId.UTCTWO, selectedZoneID))
                 .callbackData(ZoneId.UTCTWO.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdThree = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCTHREE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCTHREE))
+                .text(ZoneId.UTCTHREE.getNameZone() + getButtonStatus(ZoneId.UTCTHREE, selectedZoneID))
                 .callbackData(ZoneId.UTCTHREE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdFour = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCFOUR.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCFOUR))
+                .text(ZoneId.UTCFOUR.getNameZone() + getButtonStatus(ZoneId.UTCFOUR, selectedZoneID))
                 .callbackData(ZoneId.UTCFOUR.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdFive = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCFIVE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCFIVE))
+                .text(ZoneId.UTCFIVE.getNameZone() + getButtonStatus(ZoneId.UTCFIVE, selectedZoneID))
                 .callbackData(ZoneId.UTCFIVE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdSix = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCSIX.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCSIX))
+                .text(ZoneId.UTCSIX.getNameZone() + getButtonStatus(ZoneId.UTCSIX, selectedZoneID))
                 .callbackData(ZoneId.UTCSIX.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdSeven = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCSEVEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCSEVEN))
+                .text(ZoneId.UTCSEVEN.getNameZone() + getButtonStatus(ZoneId.UTCSEVEN, selectedZoneID))
                 .callbackData(ZoneId.UTCSEVEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdEight = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCEIGHT.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCEIGHT))
+                .text(ZoneId.UTCEIGHT.getNameZone() + getButtonStatus(ZoneId.UTCEIGHT, selectedZoneID))
                 .callbackData(ZoneId.UTCEIGHT.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdNine = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCNINE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCNINE))
+                .text(ZoneId.UTCNINE.getNameZone() + getButtonStatus(ZoneId.UTCNINE, selectedZoneID))
                 .callbackData(ZoneId.UTCNINE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdTen = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCTEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCTEN))
+                .text(ZoneId.UTCTEN.getNameZone() + getButtonStatus(ZoneId.UTCTEN, selectedZoneID))
                 .callbackData(ZoneId.UTCTEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdEleven = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCELEVEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCELEVEN))
+                .text(ZoneId.UTCELEVEN.getNameZone() + getButtonStatus(ZoneId.UTCELEVEN, selectedZoneID))
                 .callbackData(ZoneId.UTCELEVEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdTwelve = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCTWELVE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCTWELVE))
+                .text(ZoneId.UTCTWELVE.getNameZone() + getButtonStatus(ZoneId.UTCTWELVE, selectedZoneID))
                 .callbackData(ZoneId.UTCTWELVE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMOne = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSONE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSONE))
+                .text(ZoneId.UTCMINUSONE.getNameZone() + getButtonStatus(ZoneId.UTCMINUSONE, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSONE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMTwo = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSTWO.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSTWO))
+                .text(ZoneId.UTCMINUSTWO.getNameZone() + getButtonStatus(ZoneId.UTCMINUSTWO, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSTWO.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMThree = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSTHREE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSTHREE))
+                .text(ZoneId.UTCMINUSTHREE.getNameZone() + getButtonStatus(ZoneId.UTCMINUSTHREE, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSTHREE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMFour = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSFOUR.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSFOUR))
+                .text(ZoneId.UTCMINUSFOUR.getNameZone() + getButtonStatus(ZoneId.UTCMINUSFOUR, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSFOUR.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMFive = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSFIVE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSFIVE))
+                .text(ZoneId.UTCMINUSFIVE.getNameZone() + getButtonStatus(ZoneId.UTCMINUSFIVE, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSFIVE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMSix = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSSIX.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSSIX))
+                .text(ZoneId.UTCMINUSSIX.getNameZone() + getButtonStatus(ZoneId.UTCMINUSSIX, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSSIX.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMSeven = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSSEVEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSSEVEN))
+                .text(ZoneId.UTCMINUSSEVEN.getNameZone() + getButtonStatus(ZoneId.UTCMINUSSEVEN, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSSEVEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdOMEight = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSEIGHT.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSEIGHT))
+                .text(ZoneId.UTCMINUSEIGHT.getNameZone() + getButtonStatus(ZoneId.UTCMINUSEIGHT, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSEIGHT.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMNine = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSNINE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSNINE))
+                .text(ZoneId.UTCMINUSNINE.getNameZone() + getButtonStatus(ZoneId.UTCMINUSNINE, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSNINE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMTen = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSTEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSTEN))
+                .text(ZoneId.UTCMINUSTEN.getNameZone() + getButtonStatus(ZoneId.UTCMINUSTEN, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSTEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMEleven = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSELEVEN.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSELEVEN))
+                .text(ZoneId.UTCMINUSELEVEN.getNameZone() + getButtonStatus(ZoneId.UTCMINUSELEVEN, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSELEVEN.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdMTwelve = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCMINUSTWELVE.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCMINUSTWELVE))
+                .text(ZoneId.UTCMINUSTWELVE.getNameZone() + getButtonStatus(ZoneId.UTCMINUSTWELVE, selectedZoneID))
                 .callbackData(ZoneId.UTCMINUSTWELVE.getNameZone())
                 .build();
         InlineKeyboardButton buttonZoneIdZero = InlineKeyboardButton.builder()
-                .text(ZoneId.UTCZERO.getNameZone() + ZoneId.getButtonStatus(ZoneId.UTCZERO))
+                .text(ZoneId.UTCZERO.getNameZone() + getButtonStatus(ZoneId.UTCZERO, selectedZoneID))
                 .callbackData(ZoneId.UTCZERO.getNameZone())
                 .build();
         InlineKeyboardButton buttonBackToSetting = InlineKeyboardButton.builder()
@@ -157,7 +161,6 @@ public class MenuZoneId {
         keyboardMZoneIdRow7.add(buttonBackToSetting);
 
 
-
         keyboardMZoneId.add(keyboardMZoneIdRow1);
         keyboardMZoneId.add(keyboardMZoneIdRow2);
         keyboardMZoneId.add(keyboardMZoneIdRow3);
@@ -166,6 +169,14 @@ public class MenuZoneId {
         keyboardMZoneId.add(keyboardMZoneIdRow6);
         keyboardMZoneId.add(keyboardMZoneIdRow7);
 
+
         return InlineKeyboardMarkup.builder().keyboard(keyboardMZoneId).build();
+    }
+
+    public static String getButtonStatus(ZoneId currentZoneId, ZoneId selectedZoneId) {
+        if (currentZoneId == selectedZoneId) {
+            return "✅";
+        }
+        return "";
     }
 }

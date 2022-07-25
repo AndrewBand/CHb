@@ -52,10 +52,5 @@ public enum ZoneId {
         this.select = select;
     }
 
-    public static String getButtonStatus (ZoneId button){
-        if(button.isSelect()){
-            return "✅";
-        }
-        return "";
-    }
+
 }
