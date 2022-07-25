@@ -1,7 +1,7 @@
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import settings.Settings;
-import java.time.Duration;
-import java.time.LocalDateTime;
+
+import java.time.*;
 import java.util.Map;
 
 public class Timer implements Runnable {
@@ -18,6 +18,11 @@ public class Timer implements Runnable {
     }
 
     public static void timer() throws InterruptedException, TelegramApiException {
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+        System.out.println(now);
+        System.out.println(now.withZoneSameInstant(ZoneOffset.UTC));
+        System.out.println(now.withZoneSameInstant(ZoneId.of("UTC")));
+//        ZoneId Grinv = ZoneId.of()
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime startDays = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime timeSendMessage = LocalDateTime.now().withMinute(0).withSecond(0);
@@ -39,3 +44,4 @@ public class Timer implements Runnable {
         }
     }
 }
+

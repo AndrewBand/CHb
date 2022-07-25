@@ -12,6 +12,8 @@ public class Setting {
     private List<Currency> selectedCurrency = Currency.getSelectedCurrencyList();
     private NotificationTime notificationTime = NotificationTime.NINE;
 
+    private ZoneId zoneId = ZoneId.UTCZERO;
+
     public long getChatId() {
         return chatId;
     }
@@ -48,6 +50,13 @@ public class Setting {
         this.notificationTime = notificationTime;
     }
 
+    public ZoneId getZoneId() {
+        return zoneId;
+    }
+    public void setZoneId(ZoneId zoneId) {
+        this.zoneId = zoneId;
+    }
+
     @Override
     public String toString() {
         return "chatId=" + chatId +
@@ -55,6 +64,7 @@ public class Setting {
                 ", selectedBank=" + selectedBank +
                 ", selectedCurrency=" + selectedCurrency +
                 ", notificationTime=" + notificationTime +
+                ", zoneId=" + zoneId +
                 '}';
     }
 }

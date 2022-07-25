@@ -21,6 +21,7 @@ public class MenuSettings {
         List<InlineKeyboardButton> keyboardMSetRow3 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMSetRow4 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMSetRow5 = new ArrayList<>();
+        List<InlineKeyboardButton> keyboardMSetRow6 = new ArrayList<>();
         InlineKeyboardButton buttonNumOfDecPlaces = InlineKeyboardButton.builder()
                 .text(Buttons.NUM_DECIMAL_PLACES.getName() + " (" + setting.getNumberOfDecimalPlaces() + ")")
                 .callbackData(Buttons.NUM_DECIMAL_PLACES.getNameEN())
@@ -37,6 +38,10 @@ public class MenuSettings {
                 .text(Buttons.NOTIFICATION.getName() + " (" + setting.getNotificationTime().getTime() + ")")
                 .callbackData(Buttons.NOTIFICATION.getNameEN())
                 .build();
+        InlineKeyboardButton buttonZoneId = InlineKeyboardButton.builder()
+                .text(Buttons.ZONEID.getName() + " (" + setting.getZoneId().getNameZone() + ")")
+                .callbackData(Buttons.ZONEID.getNameEN())
+                .build();
         InlineKeyboardButton buttonBack = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_START.getName())
                 .callbackData(Buttons.BACK_TO_START.getNameEN())
@@ -46,12 +51,14 @@ public class MenuSettings {
         keyboardMSetRow2.add(buttonBank);
         keyboardMSetRow3.add(buttonCurrency);
         keyboardMSetRow4.add(buttonNotificationTime);
-        keyboardMSetRow5.add(buttonBack);
+        keyboardMSetRow5.add(buttonZoneId);
+        keyboardMSetRow6.add(buttonBack);
         keyboardMenuSettings.add(keyboardMSetRow1);
         keyboardMenuSettings.add(keyboardMSetRow2);
         keyboardMenuSettings.add(keyboardMSetRow3);
         keyboardMenuSettings.add(keyboardMSetRow4);
         keyboardMenuSettings.add(keyboardMSetRow5);
+        keyboardMenuSettings.add(keyboardMSetRow6);
 
         return InlineKeyboardMarkup.builder().keyboard(keyboardMenuSettings).build();
     }
