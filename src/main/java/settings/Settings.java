@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.String.format;
+
 public class Settings {
     public static Map<Long, Setting> settings = new HashMap<>();
 
@@ -24,16 +26,18 @@ public class Settings {
             messageToUser.append("Курс купівлі ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(Math.round(bankInfo.getBuyRate(currency) * Math.pow(10,numberDecPlaces))
-                            /Math.pow(10,numberDecPlaces))
+                    .append(bankInfo.getBuyRate(currency) == 0 ? "не купує" : format("%." + numberDecPlaces + "f" , bankInfo.getBuyRate(currency)))
                     .append("\n");
             messageToUser.append("Курс продажу ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(Math.round(bankInfo.getSellRate(currency) * Math.pow(10,numberDecPlaces))
-                            /Math.pow(10,numberDecPlaces))
+                    .append(bankInfo.getSellRate(currency) == 0 ? "не продає" : format("%." + numberDecPlaces + "f" , bankInfo.getSellRate(currency)))
                     .append("\n");
         }
+
         return messageToUser.toString();
     }
+
+
+
 }
