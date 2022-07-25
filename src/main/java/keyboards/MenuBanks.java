@@ -10,7 +10,6 @@ import settings.Settings;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MenuBanks {
 
     public static InlineKeyboardMarkup keyboard(long chatId) {
@@ -22,8 +21,8 @@ public class MenuBanks {
         List<InlineKeyboardButton> keyboardMSetRow3 = new ArrayList<>();
         List<InlineKeyboardButton> keyboardMSetRow4 = new ArrayList<>();
         InlineKeyboardButton buttonPrivat = InlineKeyboardButton.builder()
-                .text(Banks.PRIVATE.getBankNameEN() + getButtonStatus(Banks.PRIVATE, selectedBank))
-                .callbackData(Banks.PRIVATE.getBankNameEN())
+                .text(Banks.PRIVAT.getBankNameEN() + getButtonStatus(Banks.PRIVAT, selectedBank))
+                .callbackData(Banks.PRIVAT.getBankNameEN())
                 .build();
         InlineKeyboardButton buttonNBU = InlineKeyboardButton.builder()
                 .text(Banks.NBU.getBankNameEN() + getButtonStatus(Banks.NBU, selectedBank))
@@ -55,5 +54,4 @@ public class MenuBanks {
         }
         return "";
     }
-
 }

@@ -12,6 +12,5 @@ public class APINbu {
     public static Bank getNBUAPI() throws IOException, InterruptedException {
         final List<NbuBank> dateNBU = HttpUtil.sendGetBank(URI.create(NBU_URL));
         return HttpUtil.getNbu(dateNBU);
-
     }
 }

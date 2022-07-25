@@ -1,6 +1,5 @@
 package monobank;
 
-
 import serviceClasses.Bank;
 
 import java.io.IOException;

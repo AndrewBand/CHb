@@ -17,22 +17,22 @@ public class HttpUtil {
     private static final HttpClient CLIENT = HttpClient.newHttpClient();
     private static final Gson GSON = new Gson();
 
-    public static List<Private> sendGetBank(URI uri) throws IOException, InterruptedException {
+    public static List<Privat> sendGetBank(URI uri) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
                 .build();
         HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-        return GSON.fromJson(response.body(), new TypeToken<List<Private>>() {
+        return GSON.fromJson(response.body(), new TypeToken<List<Privat>>() {
         }.getType());
     }
 
-    public static Bank getPrivat(List<Private> date) {
-        Banks bankPrivat = Banks.PRIVATE;
+    public static Bank getPrivat(List<Privat> date) {
+        Banks bankPrivat = Banks.PRIVAT;
         Bank bank = new Bank();
 
         bank.setBankName(bankPrivat);
-        for (Private currency : date) {
+        for (Privat currency : date) {
             switch (currency.getCcy()) {
                 case "USD":
                     bank.setUSD_buy(currency.getBuy());

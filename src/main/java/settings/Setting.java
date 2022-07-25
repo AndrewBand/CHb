@@ -8,7 +8,7 @@ public class Setting {
         this.chatId = chatId;
     }
     private NumberOfDecimalPlaces numberOfDecimalPlaces = NumberOfDecimalPlaces.TWO;
-    private Banks selectedBank = Banks.PRIVATE;
+    private Banks selectedBank = Banks.PRIVAT;
     private List<Currency> selectedCurrency = Currency.getSelectedCurrencyList();
     private NotificationTime notificationTime = NotificationTime.NINE;
     private ZoneId zoneId = ZoneId.UTCTHREE;

@@ -11,9 +11,9 @@ public class APIPrivat {
     private static final String PRIVAT_PLZ_URL = "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=12";
 
     public static Bank getPrivatAPI() throws IOException, InterruptedException {
-        final List<Private> date = HttpUtil.sendGetBank(URI.create(PRIVAT_URL));
-        final List<Private> datePlz = HttpUtil.sendGetBank(URI.create(PRIVAT_PLZ_URL));
-        for (Private currency : datePlz) {
+        final List<Privat> date = HttpUtil.sendGetBank(URI.create(PRIVAT_URL));
+        final List<Privat> datePlz = HttpUtil.sendGetBank(URI.create(PRIVAT_PLZ_URL));
+        for (Privat currency : datePlz) {
             if (currency.getCcy().equals("PLZ")) {
                 date.add(currency);
                 break;

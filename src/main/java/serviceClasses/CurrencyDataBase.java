@@ -33,16 +33,15 @@ public class CurrencyDataBase {
                 }
             }
         }
-
         return currentInfo.get(bankName);
     }
 
     public static void setCurrentInfo(Banks bankName) throws IOException, InterruptedException {
         switch (bankName) {
-            case PRIVATE:
-                Bank bankPrivate = APIPrivat.getPrivatAPI();
-                bankPrivate.setTime(LocalDateTime.now());
-                currentInfo.put(bankName, bankPrivate);
+            case PRIVAT:
+                Bank bankPrivat = APIPrivat.getPrivatAPI();
+                bankPrivat.setTime(LocalDateTime.now());
+                currentInfo.put(bankName, bankPrivat);
                 break;
             case MONO:
                 Bank bankMono = APIMonobank.getMonoAPI();
@@ -55,7 +54,5 @@ public class CurrencyDataBase {
                 currentInfo.put(bankName, bankNBU);
                 break;
         }
-
     }
-
 }

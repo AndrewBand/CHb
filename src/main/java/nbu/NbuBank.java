@@ -10,7 +10,6 @@ public class NbuBank {
     private String cc;
     private String exchangedate ;
 
-
     public int getR030() {
         return r030;
     }

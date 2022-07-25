@@ -2,7 +2,7 @@ package privat;
 
 import java.util.Objects;
 
-public class Private {
+public class Privat {
     private String ccy;
     private String base_ccy;
     private float buy;
@@ -28,9 +28,9 @@ public class Private {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Private)) return false;
-        Private aPrivate = (Private) o;
-        return Objects.equals(ccy, aPrivate.ccy) && Objects.equals(base_ccy, aPrivate.base_ccy);
+        if (!(o instanceof Privat)) return false;
+        Privat aPrivat = (Privat) o;
+        return Objects.equals(ccy, aPrivat.ccy) && Objects.equals(base_ccy, aPrivat.base_ccy);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Private {
 
     @Override
     public String toString() {
-        return "Private{" +
+        return "Privat{" +
                 "ccy='" + ccy + '\'' +
                 ", base_ccy='" + base_ccy + '\'' +
                 ", buy=" + buy +
