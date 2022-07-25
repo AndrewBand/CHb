@@ -11,9 +11,7 @@ public class Setting {
     private Banks selectedBank = Banks.PRIVATE;
     private List<Currency> selectedCurrency = Currency.getSelectedCurrencyList();
     private NotificationTime notificationTime = NotificationTime.NINE;
-
-    private ZoneId zoneId = ZoneId.UTCZERO;
-
+    private ZoneId zoneId = ZoneId.UTCTHREE;
     public long getChatId() {
         return chatId;
     }
