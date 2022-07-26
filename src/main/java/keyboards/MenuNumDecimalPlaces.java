@@ -30,8 +30,8 @@ public class MenuNumDecimalPlaces {
                 .callbackData(NumberOfDecimalPlaces.FOUR.getNameDecPlaces())
                 .build();
         InlineKeyboardButton buttonHome = InlineKeyboardButton.builder()
-                .text(Buttons.BACK_HOME.getName())
-                .callbackData(Buttons.BACK_HOME.getNameEN())
+                .text(Buttons.BACK_TO_START.getName())
+                .callbackData(Buttons.BACK_TO_START.getNameEN())
                 .build();
         InlineKeyboardButton buttonBackToSetting = InlineKeyboardButton.builder()
                 .text(Buttons.BACK_TO_SETTINGS.getName())

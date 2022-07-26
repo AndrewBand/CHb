@@ -10,8 +10,7 @@ public enum Buttons {
     NOTIFICATION ("Час сповіщення","Notification"),
     ZONEID("Часовий пояс","ZoneId"),
     BACK_TO_SETTINGS("↩️","SETTINGS"),
-    BACK_TO_START ("↩️","BACK_TO_START"),
-    BACK_HOME ("🏠 ", "BACK_HOME");
+    BACK_TO_START ("🏠️","BACK_TO_START");
 
     private String buttonsName;
     private String buttonsNameEN;

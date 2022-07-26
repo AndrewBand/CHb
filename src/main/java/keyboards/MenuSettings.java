@@ -35,8 +35,10 @@ public class MenuSettings {
                 .text(Buttons.CURRENCY.getName() + selectedCurr)
                 .callbackData(Buttons.CURRENCY.getNameEN())
                 .build();
+        String NotificationTimeSet = setting.getNotificationTime().getTime() == 0 ? "OFF" :
+                String.valueOf(setting.getNotificationTime().getTime());
         InlineKeyboardButton buttonNotificationTime = InlineKeyboardButton.builder()
-                .text(Buttons.NOTIFICATION.getName() + " (" + setting.getNotificationTime().getTime() + ")")
+                .text(Buttons.NOTIFICATION.getName() + " (" + NotificationTimeSet + ")")
                 .callbackData(Buttons.NOTIFICATION.getNameEN())
                 .build();
         InlineKeyboardButton buttonZoneId = InlineKeyboardButton.builder()

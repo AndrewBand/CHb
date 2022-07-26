@@ -52,5 +52,12 @@ public enum ZoneId {
         this.select = select;
     }
 
-
+    public static ZoneId convertToEnum (String text){
+        for (ZoneId button: ZoneId.values()) {
+            if (button.getNameZone().equals(text)) {
+                return button;
+            }
+        }
+        return null;
+    }
 }

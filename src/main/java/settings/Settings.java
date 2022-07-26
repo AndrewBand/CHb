@@ -26,12 +26,14 @@ public class Settings {
             messageToUser.append("Курс купівлі ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(bankInfo.getBuyRate(currency) == 0 ? "не купує" : format("%." + numberDecPlaces + "f" , bankInfo.getBuyRate(currency)))
+                    .append(bankInfo.getBuyRate(currency) == 0 ? "не має купівлі" :
+                            format("%." + numberDecPlaces + "f" , bankInfo.getBuyRate(currency)))
                     .append("\n");
             messageToUser.append("Курс продажу ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(bankInfo.getSellRate(currency) == 0 ? "не продає" : format("%." + numberDecPlaces + "f" , bankInfo.getSellRate(currency)))
+                    .append(bankInfo.getSellRate(currency) == 0 ? "не має продажу" :
+                            format("%." + numberDecPlaces + "f" , bankInfo.getSellRate(currency)))
                     .append("\n");
         }
 
