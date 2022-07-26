@@ -3,14 +3,16 @@ package settings;
 import java.util.List;
 
 public class Setting {
-    private long chatId;
+    private Long chatId;
     private NumberOfDecimalPlaces numberOfDecimalPlaces;
     private Banks selectedBank;
     private List<Currency> selectedCurrency;
     private NotificationTime notificationTime;
     private ZoneId zoneId;
 
-    public Setting(long chatId, NumberOfDecimalPlaces numberOfDecimalPlaces, Banks selectedBank,
+    public Setting() {}
+
+    public Setting(Long chatId, NumberOfDecimalPlaces numberOfDecimalPlaces, Banks selectedBank,
                    List<Currency> selectedCurrency, NotificationTime notificationTime, ZoneId zoneId) {
         this.chatId = chatId;
         this.numberOfDecimalPlaces = numberOfDecimalPlaces;
@@ -20,7 +22,11 @@ public class Setting {
         this.zoneId = zoneId;
     }
 
-    public long getChatId() {
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
+    }
+
+    public Long getChatId() {
         return chatId;
     }
 
