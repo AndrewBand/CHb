@@ -6,5 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IntermediateSettings {
-    public static List<IntermediateSetting> intermediateSettings = new ArrayList<>();
+//    public static List<IntermediateSetting> intermediateSettings = new ArrayList<>();
+
+    public static Map<Long, IntermediateSetting> intermediateSettings = new HashMap<>();
 }
