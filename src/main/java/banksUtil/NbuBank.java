@@ -1,6 +1,5 @@
-package nbu;
+package banksUtil;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class NbuBank {

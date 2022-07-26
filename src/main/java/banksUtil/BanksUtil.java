@@ -1,0 +1,130 @@
+package banksUtil;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import serviceClasses.Bank;
+
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+
+public class BanksUtil {
+    private static final HttpClient CLIENT = HttpClient.newHttpClient();
+    private static final Gson GSON = new Gson();
+
+    private static final String PRIVAT_URL = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5";
+    private static final String PRIVAT_PLZ_URL = "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=12";
+    private static final String NBU_URL = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json";
+    private static final String MONOBANK_URL = "https://api.monobank.ua/bank/currency";
+
+
+    static Type typePrivat = new TypeToken<List<Privat>>() {
+    }.getType();
+    static Type typeNBU = new TypeToken<List<NbuBank>>() {
+    }.getType();
+    static Type typeMono = new TypeToken<List<Monobank>>() {
+    }.getType();
+
+    public static Bank getPrivatAPI() throws IOException, InterruptedException {
+        final List<Privat> datePrivat = sendGetBank(URI.create(PRIVAT_URL),typePrivat);
+        final List<Privat> datePrivatPlz = sendGetBank(URI.create(PRIVAT_PLZ_URL),typePrivat);
+        for (Privat currency : datePrivat) {
+            if (currency.getCcy().equals("PLZ")) {
+                datePrivat.add(currency);
+                break;
+            }
+        }
+        return getPrivat(datePrivat);
+    }
+
+    public static Bank getMonoAPI() throws IOException, InterruptedException {
+        final List<Monobank> dateMono = sendGetBank(URI.create(MONOBANK_URL),typeMono);
+        return getMonobank(dateMono);
+    }
+
+    public static Bank getNBUAPI() throws IOException, InterruptedException {
+        final List<NbuBank> dateNBU = sendGetBank(URI.create(NBU_URL),typeNBU);
+        return getNbu(dateNBU);
+    }
+
+    public static <T> List<T> sendGetBank(URI uri,Type typeBank) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .GET()
+                .build();
+        HttpResponse<String> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
+        return GSON.fromJson(response.body(), typeBank);
+    }
+
+    public static Bank getPrivat(List<Privat> date) {
+        Bank bank = new Bank();
+        for (Privat currency : date) {
+            switch (currency.getCcy()) {
+                case "USD":
+                    bank.setUSD_buy(currency.getBuy());
+                    bank.setUSD_sell(currency.getSale());
+                    break;
+                case "EUR":
+                    bank.setEUR_buy(currency.getBuy());
+                    bank.setEUR_sell(currency.getSale());
+                    break;
+                case "PLZ":
+                    bank.setPLN_buy(currency.getBuy());
+                    bank.setPLN_sell(currency.getSale());
+                    break;
+                case "BTC":
+                    bank.setBTC_buy(currency.getBuy());
+                    bank.setBTC_sell(currency.getSale());
+                    break;
+            }
+        }
+        return bank;
+    }
+
+    public static Bank getMonobank(List<Monobank> monobankList) {
+        Bank bank = new Bank();
+        for (Monobank currency : monobankList) {
+            if (currency.getCurrencyCodeA() == 840 && currency.getCurrencyCodeB() == 980) {
+                bank.setUSD_buy(currency.getRateBuy());
+                bank.setUSD_sell(currency.getRateSell());
+            }else if(currency.getCurrencyCodeA() == 978 && currency.getCurrencyCodeB() == 980) {
+                bank.setEUR_buy(currency.getRateBuy());
+                bank.setEUR_sell(currency.getRateSell());
+            }else if(currency.getCurrencyCodeA() == 985) {
+                bank.setPLN_buy(currency.getRateCross());
+                bank.setPLN_sell(currency.getRateCross());
+            }
+        }
+        return bank;
+    }
+
+    public static Bank getNbu(List<NbuBank> listCurr) {
+        Bank bank = new Bank();
+        for (NbuBank currency : listCurr) {
+            switch (currency.getCc()) {
+                case "USD":
+                    bank.setUSD_buy(currency.getRate());
+                    bank.setUSD_sell(currency.getRate());
+                    break;
+                case "EUR":
+                    bank.setEUR_buy(currency.getRate());
+                    bank.setEUR_sell(currency.getRate());
+                    break;
+                case "PLN":
+                    bank.setPLN_buy(currency.getRate());
+                    bank.setPLN_sell(currency.getRate());
+                    break;
+                case "BTC":
+                    bank.setBTC_buy(currency.getRate());
+                    bank.setBTC_sell(currency.getRate());
+                    break;
+            }
+        }
+        return bank;
+    }
+}

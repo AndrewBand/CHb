@@ -1,4 +1,4 @@
-package monobank;
+package banksUtil;
 
 import java.util.Objects;
 

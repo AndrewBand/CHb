@@ -1,8 +1,6 @@
 package serviceClasses;
 
-import monobank.APIMonobank;
-import nbu.APINbu;
-import privat.APIPrivat;
+import banksUtil.BanksUtil;
 import settings.Banks;
 
 import java.io.IOException;
@@ -39,17 +37,17 @@ public class CurrencyDataBase {
     public static void setCurrentInfo(Banks bankName) throws IOException, InterruptedException {
         switch (bankName) {
             case PRIVAT:
-                Bank bankPrivat = APIPrivat.getPrivatAPI();
+                Bank bankPrivat = BanksUtil.getPrivatAPI();
                 bankPrivat.setTime(LocalDateTime.now());
                 currentInfo.put(bankName, bankPrivat);
                 break;
             case MONO:
-                Bank bankMono = APIMonobank.getMonoAPI();
+                Bank bankMono = BanksUtil.getMonoAPI();
                 bankMono.setTime(LocalDateTime.now());
                 currentInfo.put(bankName, bankMono);
                 break;
             case NBU:
-                Bank bankNBU = APINbu.getNBUAPI();
+                Bank bankNBU = BanksUtil.getNBUAPI();
                 bankNBU.setTime(LocalDateTime.now());
                 currentInfo.put(bankName, bankNBU);
                 break;

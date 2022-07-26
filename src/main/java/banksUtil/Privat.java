@@ -1,4 +1,4 @@
-package privat;
+package banksUtil;
 
 import java.util.Objects;
 
