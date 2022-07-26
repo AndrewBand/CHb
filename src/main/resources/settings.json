@@ -1,0 +1,12 @@
+[
+  {
+    "chatId": 603642450,
+    "numberOfDecimalPlaces": "TWO",
+    "selectedBank": "PRIVAT",
+    "selectedCurrency": [
+      "USD"
+    ],
+    "notificationTime": "NINE",
+    "zoneId": "UTC_THREE"
+  }
+]
