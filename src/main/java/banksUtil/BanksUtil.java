@@ -33,7 +33,7 @@ public class BanksUtil {
     public static Bank getPrivatAPI() throws IOException, InterruptedException {
         final List<Privat> datePrivat = sendGetBank(URI.create(PRIVAT_URL),typePrivat);
         final List<Privat> datePrivatPlz = sendGetBank(URI.create(PRIVAT_PLZ_URL),typePrivat);
-        for (Privat currency : datePrivat) {
+        for (Privat currency : datePrivatPlz) {
             if (currency.getCcy().equals("PLZ")) {
                 datePrivat.add(currency);
                 break;
