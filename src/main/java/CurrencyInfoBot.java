@@ -77,7 +77,7 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         synchronized (monitor) {
             if (Settings.settings.get(chatId) == null) {
                 userSettings = new Setting(chatId, NumberOfDecimalPlaces.TWO, Banks.PRIVAT,
-                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTCTHREE);
+                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTC_THREE);
             } else {
                 userSettings = Settings.settings.get(chatId);
             }
@@ -107,7 +107,7 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         synchronized (monitor) {
             if (Settings.settings.get(chatId) == null) {
                 userSettings = new Setting(chatId, NumberOfDecimalPlaces.TWO, Banks.PRIVAT,
-                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTCTHREE);
+                        Currency.getSelectedCurrencyList(), NotificationTime.NINE, ZoneId.UTC_THREE);
             } else {
                 userSettings = Settings.settings.get(chatId);
             }
@@ -346,129 +346,129 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         String dataButtonQuery = buttonQuery.getData();
         if (ZoneId.convertToEnum(dataButtonQuery) != null){
             switch (ZoneId.convertToEnum(dataButtonQuery)) {
-                case UTCONE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCONE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCONE);
+                case UTC_ONE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_ONE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_ONE);
                     }
                     break;
-                case UTCTWO:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCTWO.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCTWO);
+                case UTC_TWO:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_TWO.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_TWO);
                     }
                     break;
-                case UTCTHREE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCTHREE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCTHREE);
+                case UTC_THREE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_THREE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_THREE);
                     }
                     break;
-                case UTCFOUR:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCFOUR.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCFOUR);
+                case UTC_FOUR:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_FOUR.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_FOUR);
                     }
                     break;
-                case UTCFIVE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCFIVE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCFIVE);
+                case UTC_FIVE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_FIVE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_FIVE);
                     }
                     break;
-                case UTCSIX:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCSIX.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCSIX);
+                case UTC_SIX:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_SIX.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_SIX);
                     }
                     break;
-                case UTCSEVEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCSEVEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCSEVEN);
+                case UTC_SEVEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_SEVEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_SEVEN);
                     }
                     break;
-                case UTCEIGHT:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCEIGHT.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCEIGHT);
+                case UTC_EIGHT:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_EIGHT.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_EIGHT);
                     }
                     break;
-                case UTCNINE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCNINE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCNINE);
+                case UTC_NINE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_NINE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_NINE);
                     }
                     break;
-                case UTCTEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCTEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCTEN);
+                case UTC_TEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_TEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_TEN);
                     }
                     break;
-                case UTCELEVEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCELEVEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCELEVEN);
+                case UTC_ELEVEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_ELEVEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_ELEVEN);
                     }
                     break;
-                case UTCTWELVE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCTWELVE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCTWELVE);
+                case UTC_TWELVE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_TWELVE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_TWELVE);
                     }
                     break;
-                case UTCMINUSONE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSONE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSONE);
+                case UTC_MINUS_ONE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_ONE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_ONE);
                     }
                     break;
-                case UTCMINUSTWO:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSTWO.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSTWO);
+                case UTC_MINUS_TWO:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_TWO.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_TWO);
                     }
                     break;
-                case UTCMINUSTHREE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSTHREE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSTHREE);
+                case UTC_MINUS_THREE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_THREE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_THREE);
                     }
                     break;
-                case UTCMINUSFOUR:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSFOUR.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSFOUR);
+                case UTC_MINUS_FOUR:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_FOUR.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_FOUR);
                     }
                     break;
-                case UTCMINUSFIVE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSFIVE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSFIVE);
+                case UTC_MINUS_FIVE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_FIVE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_FIVE);
                     }
                     break;
-                case UTCMINUSSIX:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSSIX.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSSIX);
+                case UTC_MINUS_SIX:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_SIX.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_SIX);
                     }
                     break;
-                case UTCMINUSSEVEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSSEVEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSSEVEN);
+                case UTC_MINUS_SEVEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_SEVEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_SEVEN);
                     }
                     break;
-                case UTCMINUSEIGHT:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSEIGHT.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSEIGHT);
+                case UTC_MINUS_EIGHT:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_EIGHT.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_EIGHT);
                     }
                     break;
-                case UTCMINUSNINE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSNINE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSNINE);
+                case UTC_MINUS_NINE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_NINE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_NINE);
                     }
                     break;
-                case UTCMINUSTEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSTEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSTEN);
+                case UTC_MINUS_TEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_TEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_TEN);
                     }
                     break;
-                case UTCMINUSELEVEN:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSELEVEN.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSELEVEN);
+                case UTC_MINUS_ELEVEN:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_ELEVEN.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_ELEVEN);
                     }
                     break;
-                case UTCMINUSTWELVE:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCMINUSTWELVE.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCMINUSTWELVE);
+                case UTC_MINUS_TWELVE:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_MINUS_TWELVE.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_MINUS_TWELVE);
                     }
                     break;
-                case UTCZERO:
-                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTCZERO.getNameZone())) {
-                        saveSelectZoneId(buttonQuery, ZoneId.UTCZERO);
+                case UTC_ZERO:
+                    if (!userSettings.getZoneId().getNameZone().equals(ZoneId.UTC_ZERO.getNameZone())) {
+                        saveSelectZoneId(buttonQuery, ZoneId.UTC_ZERO);
                     }
                     break;
             }
