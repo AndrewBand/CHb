@@ -59,11 +59,24 @@ public class Settings {
     }
 
 
+//    public static void load() {
+//        synchronized (monitor) {
+//            try {
+//                IntermediateSettings.intermediateSettings = new ObjectMapper().readValue(fileSettingsGsonCheck(),
+//                        IntermediateSettings.intermediateSettings.getClass());
+//                System.out.println(IntermediateSettings.intermediateSettings);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
+
     public static void load() {
         synchronized (monitor) {
             try {
                 IntermediateSettings.intermediateSettings = new ObjectMapper().readValue(fileSettingsGsonCheck(),
-                        IntermediateSettings.intermediateSettings.getClass());
+                        new TypeReference<List<IntermediateSetting>>() {
+                });
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -71,35 +84,62 @@ public class Settings {
     }
 
     public static void save() {
+        List<Setting> saveList = new ArrayList<>();
+
+        Settings.settings.forEach((k, v) -> saveList.add(v));
+
         synchronized (monitor) {
+            String s = settingGson.toJson(saveList);
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileSettingsGsonCheck()))) {
-                writer.write(settingGson.toJson(settings));
+                writer.write(settingGson.toJson(saveList));
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
 
+//    public static void save() {
+//        synchronized (monitor) {
+//            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileSettingsGsonCheck()))) {
+//                writer.write(settingGson.toJson(settings));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
     public static void converter() {
-        Map<Long, IntermediateSetting> inputMap = IntermediateSettings.intermediateSettings;
+        List<IntermediateSetting> inputList = IntermediateSettings.intermediateSettings;
         Map<Long, Setting> outputMap = Settings.settings;
-
-
-        for (Long key : inputMap.keySet()) {
-            System.out.println(key);
+        for (IntermediateSetting oneSetting : inputList) {
             Setting outputSetting = new Setting();
-//        for (Map.Entry pair : IntermediateSettings.intermediateSettings.entrySet()) {
-            IntermediateSetting inputSetting = inputMap.get(key);
-            outputSetting.setChatId(inputSetting.getChatId());
-            outputSetting.setNumberOfDecimalPlaces(parseNumOfDecPlaces(inputSetting.getNumberOfDecimalPlaces()));
-            outputSetting.setSelectedBank(parseSelectedBank(inputSetting.getSelectedBank()));
-            outputSetting.setSelectedCurrency(parseCurrency(inputSetting.getSelectedCurrency()));
-            outputSetting.setNotificationTime(parseNotificationTime(inputSetting.getNotificationTime()));
-            outputSetting.setZoneId(parseZoneId(inputSetting.getZoneId()));
-            outputMap.put(key, outputSetting);
+            outputSetting.setChatId(oneSetting.getChatId());
+            outputSetting.setNumberOfDecimalPlaces(parseNumOfDecPlaces(oneSetting.getNumberOfDecimalPlaces()));
+            outputSetting.setSelectedBank(parseSelectedBank(oneSetting.getSelectedBank()));
+            outputSetting.setSelectedCurrency(parseCurrency(oneSetting.getSelectedCurrency()));
+            outputSetting.setNotificationTime(parseNotificationTime(oneSetting.getNotificationTime()));
+            outputSetting.setZoneId(parseZoneId(oneSetting.getZoneId()));
+            outputMap.put(oneSetting.getChatId(), outputSetting);
         }
+        System.out.println(Settings.settings);
 
     }
+
+//        for (Long key : inputList.keySet()) {
+//        for (Map.Entry pair : inputList.entrySet()) {
+//
+//            Setting outputSetting = new Setting();
+////        for (Map.Entry pair : IntermediateSettings.intermediateSettings.entrySet()) {
+//            System.out.println(pair.getValue());
+//            IntermediateSetting inputSetting = (IntermediateSetting) pair.getValue();
+//            outputSetting.setChatId(inputSetting.getChatId());
+//            outputSetting.setNumberOfDecimalPlaces(parseNumOfDecPlaces(inputSetting.getNumberOfDecimalPlaces()));
+//            outputSetting.setSelectedBank(parseSelectedBank(inputSetting.getSelectedBank()));
+//            outputSetting.setSelectedCurrency(parseCurrency(inputSetting.getSelectedCurrency()));
+//            outputSetting.setNotificationTime(parseNotificationTime(inputSetting.getNotificationTime()));
+//            outputSetting.setZoneId(parseZoneId(inputSetting.getZoneId()));
+//            outputMap.put(inputSetting.getChatId(), outputSetting);
+//        }
 
     private static NumberOfDecimalPlaces parseNumOfDecPlaces(String inputStrNumOfDec) {
         for (NumberOfDecimalPlaces value : NumberOfDecimalPlaces.values()) {

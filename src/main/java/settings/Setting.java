@@ -69,14 +69,14 @@ public class Setting {
         this.zoneId = zoneId;
     }
 
-    @Override
-    public String toString() {
-        return "chatId=" + chatId +
-                ", numberOfDecimalPlaces=" + numberOfDecimalPlaces +
-                ", selectedBank=" + selectedBank +
-                ", selectedCurrency=" + selectedCurrency +
-                ", notificationTime=" + notificationTime +
-                ", zoneId=" + zoneId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "chatId=" + chatId +
+//                ", numberOfDecimalPlaces=" + numberOfDecimalPlaces +
+//                ", selectedBank=" + selectedBank +
+//                ", selectedCurrency=" + selectedCurrency +
+//                ", notificationTime=" + notificationTime +
+//                ", zoneId=" + zoneId +
+//                '}';
+//    }
 }
