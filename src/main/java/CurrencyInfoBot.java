@@ -35,24 +35,33 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         return instance;
     }
 
-    @Override
-    public String getBotUsername() {
-        return "@CurrencyInfoProjectGroup1Bot";
-    }
-
+//    @Override
 //    public String getBotUsername() {
-//        return "TestKabaBOT";
+//        return "@CurrencyInfoProjectGroup1Bot";
 //    }
-
+//
+////    public String getBotUsername() {
+////        return "TestKabaBOT";
+////    }
+//
+//
+//    @Override
+//    public String getBotToken() {
+//        return "5416117406:AAE1XHQxbn8TIY2perQrAAiQsNcxlcth9Wo";
+//    }
+//
+////    public String getBotToken() {
+////        return "5110494726:AAHvvtZ2yxM8dnzpR730WBz4eeG7haGp9Kw";
+////    }
+@Override
+public String getBotUsername() {
+    return "AndrNikNameBot";
+}
 
     @Override
     public String getBotToken() {
-        return "5416117406:AAE1XHQxbn8TIY2perQrAAiQsNcxlcth9Wo";
+        return "5041766504:AAFn65xA7HvfZ0E_HkNcsBUl-SS8Mym6DwQ";
     }
-
-//    public String getBotToken() {
-//        return "5110494726:AAHvvtZ2yxM8dnzpR730WBz4eeG7haGp9Kw";
-//    }
 
     @Override
     public void onUpdateReceived(Update update) {
