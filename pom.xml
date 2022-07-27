@@ -44,12 +44,17 @@
             <artifactId>heroku-maven-plugin</artifactId>
             <version>3.0.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>3.4.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
                 <configuration>
                     <archive>
                         <manifest>
