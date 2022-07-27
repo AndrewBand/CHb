@@ -66,11 +66,6 @@ public class CurrencyInfoBot extends TelegramLongPollingBot {
         if (update.hasCallbackQuery()) {
             try {
                 handleQuery(update.getCallbackQuery());
-                Settings.save();
-                Settings.load();
-                Settings.converter();
-                System.out.println("--------------");
-                System.out.println(Settings.settings);
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
