@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static java.lang.String.format;
 
@@ -21,8 +23,11 @@ public class Settings {
 
     private static final Object monitor = new Object();
 
+    static ExecutorService service = Executors.newSingleThreadExecutor();
 
-    public static String getInfo(Long chatId) {
+
+    public static String getInfo (Long chatId) {
+        service.execute(new SaveSettings());
         StringBuilder messageToUser = new StringBuilder();
         Setting userSetting = settings.get(chatId);
         String bankName = userSetting.getSelectedBank().getBankNameUA();
@@ -34,12 +39,14 @@ public class Settings {
             messageToUser.append("Курс купівлі ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(bankInfo.getBuyRate(currency) == 0 ? "не купує" : format("%." + numberDecPlaces + "f", bankInfo.getBuyRate(currency)))
+                    .append(bankInfo.getBuyRate(currency) == 0 ? "немає купівлі" :
+                            format("%." + numberDecPlaces + "f" , bankInfo.getBuyRate(currency)))
                     .append("\n");
             messageToUser.append("Курс продажу ")
                     .append(currency.getCurrencyName())
                     .append(" - ")
-                    .append(bankInfo.getSellRate(currency) == 0 ? "не продає" : format("%." + numberDecPlaces + "f", bankInfo.getSellRate(currency)))
+                    .append(bankInfo.getSellRate(currency) == 0 ? "немає продажу" :
+                            format("%." + numberDecPlaces + "f" , bankInfo.getSellRate(currency)))
                     .append("\n");
         }
         return messageToUser.toString();
@@ -82,19 +89,21 @@ public class Settings {
     }
 
     public static void converter() {
-        Map<Long, IntermediateSetting> inputMap = IntermediateSettings.intermediateSettings;
-        Map<Long, Setting> outputMap = Settings.settings;
-        inputMap.forEach((k,v) -> {
-            Setting outputSetting = new Setting();
+        synchronized (monitor) {
+            Map<Long, IntermediateSetting> inputMap = IntermediateSettings.intermediateSettings;
+            Map<Long, Setting> outputMap = Settings.settings;
+            inputMap.forEach((k, v) -> {
+                Setting outputSetting = new Setting();
 
-            outputSetting.setChatId(v.getChatId());
-            outputSetting.setNumberOfDecimalPlaces(parseNumOfDecPlaces(v.getNumberOfDecimalPlaces()));
-            outputSetting.setSelectedBank(parseSelectedBank(v.getSelectedBank()));
-            outputSetting.setSelectedCurrency(parseCurrency(v.getSelectedCurrency()));
-            outputSetting.setNotificationTime(parseNotificationTime(v.getNotificationTime()));
-            outputSetting.setZoneId(parseZoneId(v.getZoneId()));
-            outputMap.put(v.getChatId(), outputSetting);
-        });
+                outputSetting.setChatId(v.getChatId());
+                outputSetting.setNumberOfDecimalPlaces(parseNumOfDecPlaces(v.getNumberOfDecimalPlaces()));
+                outputSetting.setSelectedBank(parseSelectedBank(v.getSelectedBank()));
+                outputSetting.setSelectedCurrency(parseCurrency(v.getSelectedCurrency()));
+                outputSetting.setNotificationTime(parseNotificationTime(v.getNotificationTime()));
+                outputSetting.setZoneId(parseZoneId(v.getZoneId()));
+                outputMap.put(v.getChatId(), outputSetting);
+            });
+        }
     }
 
     private static NumberOfDecimalPlaces parseNumOfDecPlaces(String inputStrNumOfDec) {
